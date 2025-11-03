@@ -1,7 +1,7 @@
 {
-  "name": "triage",
+  "name": "support-triage-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project is a Support Triage Bot built with Mastra. It analyzes support messages, detects keywords, and assigns a priority level to the message. This helps support teams to quickly identify and address urgent issues.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "build": "mastra build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Abubakar Nabil",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
