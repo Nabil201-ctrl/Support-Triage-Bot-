@@ -8,7 +8,7 @@ This project is a Support Triage Bot built with Mastra. It analyzes support mess
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/Support-Triage-Bot-.git
+   git clone https://github.com/Nabil201-ctrl/Support-Triage-Bot-.git
    ```
 2. Install the dependencies:
    ```bash
