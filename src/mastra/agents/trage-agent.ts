@@ -23,7 +23,7 @@ export const supportTriageAgent = new Agent({
 
     PRIORITY RULES:
     - HIGH: "broken", "crash", "emergency", "urgent", "not working", "error", "failed", "down", "critical"
-    - MEDIUM: "issue", "problem", "help", "question", "how to", "stuck", "trouble", "not sure", "confused"  
+    - MEDIUM: "issue", "problem", "help", "question", "how to", "stuck", "trouble", "not sure", "confused" 
     - LOW: "thanks", "thank you", "feature", "suggestion", "idea", "maybe", "when", "can you"
 
     ACTION RULES:

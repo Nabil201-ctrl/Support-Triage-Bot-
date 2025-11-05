@@ -66,22 +66,41 @@ export const formatTriageResponseTool = createTool({
   execute: async ({ context }) => {
     const { needsUrgentTriage, priorityLevel, suggestedActions, reason, keywordsFound } = context;
 
-    const visualIndicator = needsUrgentTriage ? '🔴' :
-      priorityLevel === 'high' ? '🔴' :
-        priorityLevel === 'medium' ? '🟡' : '🟢';
+    const visualIndicator = needsUrgentTriage
+      ? "🔴"
+      : priorityLevel === "high"
+        ? "🔴"
+        : priorityLevel === "medium"
+          ? "🟡"
+          : "🟢";
 
-    const formattedResponse = JSON.stringify({
-      needs_urgent_triage: needsUrgentTriage,
-      priority_level: priorityLevel,
-      suggested_actions: suggestedActions,
-      reason: reason,
-      keywords_found: keywordsFound,
-      visual_indicator: visualIndicator,
-      timestamp: new Date().toISOString(),
-      response_id: `tri_${Date.now()}`
-    }, null, 2);
+    // Dynamic response message based on urgency
+    let responseMessage = "";
 
-    const summary = `Priority: ${priorityLevel.toUpperCase()} | Keywords: ${keywordsFound.length} | Urgent: ${needsUrgentTriage ? 'YES' : 'NO'}`;
+    if (needsUrgentTriage || priorityLevel === "high") {
+      responseMessage = `Your message has been received and marked as *high priority*. Our support team will work on it immediately to resolve the issue.`;
+    } else if (priorityLevel === "medium") {
+      responseMessage = `Your message has been received and will be attended to shortly. We’ve noted some issues that require attention, and our team will follow up soon.`;
+    } else {
+      responseMessage = `Your message has been received. It doesn't appear urgent, but we’ll review it and get back to you when possible.`;
+    }
+
+    const formattedResponse = `
+${visualIndicator} ${responseMessage}
+
+📝 *Summary*
+---------------------------------------
+• Priority Level: ${priorityLevel.toUpperCase()}
+• Urgent Triage: ${needsUrgentTriage ? "Yes" : "No"}
+• Reason: ${reason}
+• Keywords Detected: ${keywordsFound.join(", ") || "None"}
+• Suggested Actions: ${suggestedActions.join(", ")}
+---------------------------------------
+Timestamp: ${new Date().toISOString()}
+Response ID: tri_${Date.now()}
+`;
+
+    const summary = `Priority: ${priorityLevel.toUpperCase()} | Keywords: ${keywordsFound.length} | Urgent: ${needsUrgentTriage ? "YES" : "NO"}`;
 
     return {
       formattedResponse,
@@ -89,7 +108,8 @@ export const formatTriageResponseTool = createTool({
       visualIndicator,
       summary,
     };
-  },
+  }
+
 });
 
 export const supportTools = {
