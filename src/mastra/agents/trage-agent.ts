@@ -2,7 +2,7 @@
 import { Agent } from '@mastra/core/agent';
 import { Memory } from '@mastra/memory';
 import { LibSQLStore } from '@mastra/libsql';
-import { supportTools } from '../tools/support-tools';
+import { supportTools } from '../tools/triage-bot';
 
 export const supportTriageAgent = new Agent({
   name: 'Support Triage Agent',
