@@ -2,7 +2,7 @@
 import { Agent } from '@mastra/core/agent';
 import { Memory } from '@mastra/memory';
 import { LibSQLStore } from '@mastra/libsql';
-import { supportTools } from '../tools/triage-bot';
+import { analyzeSupportMessageTool, formatTriageResponseTool } from '../tools/triage-bot';
 
 export const supportTriageAgent = new Agent({
   name: 'Support Triage Agent',
@@ -30,13 +30,14 @@ export const supportTriageAgent = new Agent({
     Timestamp: 2025-11-05T16:32:21.000Z
     Response ID: tri_1730813541000"
 
-    IMPORTANT: 
+    IMPORTANT:
     - Always use both tools in sequence
     - Return only the final formatted string from formatTriageResponseTool
   `,
   model: "google/gemini-2.0-flash",
   tools: {
-    supportTools
+    analyzeSupportMessageTool,
+    formatTriageResponseTool
   },
   memory: new Memory({
     storage: new LibSQLStore({
