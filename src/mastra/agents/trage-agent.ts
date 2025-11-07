@@ -34,7 +34,7 @@ export const supportTriageAgent = new Agent({
     - Always use both tools in sequence
     - Return only the final formatted string from formatTriageResponseTool
   `,
-  model: "google/gemini-2.5-pro",
+  model: "google/gemini-2.0-flash",
   tools: {
     supportTools
   },
