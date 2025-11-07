@@ -1,12 +1,13 @@
 import { Mastra } from "@mastra/core/mastra";
 import { supportTriageAgent } from "./agents/trage-agent";
-import { supportTools } from "./workflow/triageworkflow";
+import { analyzeSupportMessageToolWorkFlow, formatTriageResponseToolWorkFlow } from "./workflow/triageworkflow";
 import { a2aAgentRoute } from "./routes/route";
 import { LibSQLStore } from "@mastra/libsql";
 import { PinoLogger } from '@mastra/loggers';
 export const mastra = new Mastra({
   workflows: {
-    supportTools
+    analyzeSupportMessageToolWorkFlow,
+    formatTriageResponseToolWorkFlow
   },
   agents: { supportTriageAgent },
   storage: new LibSQLStore({
