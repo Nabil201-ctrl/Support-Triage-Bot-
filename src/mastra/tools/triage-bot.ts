@@ -147,7 +147,3 @@ Response ID: tri_${Date.now()}
   }
 });
 
-export const supportTools = {
-  analyzeSupportMessageTool,
-  formatTriageResponseTool,
-};
